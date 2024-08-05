@@ -1,0 +1,75 @@
+<style>
+  body {
+    margin-bottom: 2em;
+  }
+  
+  body > form {
+    display: flex;
+    flex-direction: column;
+    height: 200px;
+    justify-content: space-evenly;
+    padding: 1em 2em;
+  }
+
+  li {
+    display: flex;
+    align-content: stretch;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    flex-direction: column;
+  }
+
+  body > ul > li {
+    margin: 1em 0;
+    width: 90%;
+  }
+
+  body > ul > li > a {
+    margin: 0.5em;
+    height: 30px;
+    width: 65px;
+    border-radius: 5px;
+    background-color: rgb(11, 136, 124) !important;
+    color: white;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    text-decoration: none;
+  }
+
+  body > ul > li > form > button {
+    margin: 0.5em;
+    height: 30px;
+    width: 65px;
+    border-radius: 5px;
+    border: none;
+    background-color: red;
+    color: white;
+  }
+
+  body > a {
+    margin-left: 3em;
+  }
+</style>
+
+<h1>Books</h1>
+<form action="/books/add" method="POST">
+  <input type="text" name="title" placeholder="Title" required>
+  <input type="text" name="author" placeholder="Author" required>
+  <input type="text" name="isbn" placeholder="ISBN" required>
+  <input type="date" name="publishDate" required>
+  <button type="submit">Add Book</button>
+</form>
+<ul>
+  <% books.forEach(book => { %>
+    <li>
+      <%= book.title %> by <%= book.author %>
+      <a href="/books/edit/<%= book._id %>">Edit</a>
+      <form action="/books/delete/<%= book._id %>" method="POST" style="display:inline;">
+        <button type="submit">Delete</button>
+      </form>
+    </li>
+  <% }) %>
+</ul>
+<a href="/">Back to Home</a>

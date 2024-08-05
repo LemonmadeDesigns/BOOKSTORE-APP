@@ -1,0 +1,16 @@
+<h2>Books</h2>
+<ul>
+  <% books.forEach(book => { %>
+  <li><%= book.title %> by <%= book.author %></li>
+  <% }) %>
+</ul>
+
+<h2>Magazines</h2>
+<ul>
+  <% magazines.forEach(magazine => { %>
+  <li><%= magazine.title %> (<%= magazine.issue %>)</li>
+  <% }) %>
+</ul>
+
+<h3>Aggregated Data</h3>
+<a href="/aggregate">View Author Publication Counts</a>

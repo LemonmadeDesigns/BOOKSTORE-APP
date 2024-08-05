@@ -1,0 +1,112 @@
+<title>Author Publication Counts</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  h1 {
+    color: #2c3e50;
+    border-bottom: 2px solid #3498db;
+    padding-bottom: 10px;
+  }
+  h2 {
+    color: #e74c3c;
+    margin-top: 30px;
+  }
+  h3 {
+    color: #2980b9;
+  }
+  span#number_span {
+    font-size: 24px;
+    font-weight: bold;
+    color: yellow;
+    text-shadow: 1px 1px 3px black;
+    padding: 0.5em;
+    background-color: red;
+    box-shadow: 1px 1px 3px black;
+    border-radius: 12%;
+  }
+  ul {
+    list-style-type: none;
+    padding-left: 0;
+  }
+  li {
+    margin-bottom: 10px;
+  }
+  .publication-count {
+    font-weight: bold;
+    color: #27ae60;
+  }
+  .publication-list {
+    margin-left: 20px;
+  }
+  .publication-item {
+    background-color: #f2f2f2;
+    padding: 10px;
+    margin-bottom: 5px;
+    border-radius: 5px;
+  }
+  .home-link {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 15px;
+    background-color: #3498db;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+  }
+  .home-link:hover {
+    background-color: #2980b9;
+  }
+</style>
+
+<h1>Author Publication Counts</h1>
+
+<p>
+  Total authors with both books and magazines:
+  <span id="number_span"
+    ><%= aggregatedData.filter(author => author.bookCount > 0 && author.magazineCount > 0).length %></span
+  >
+</p>
+
+<!-- Iterate over the aggregatedData array to display the author's name, the number of books and magazines they have, and the details of each publication. -->
+<% aggregatedData.forEach(authorData => { %>
+
+<!-- Display the author's name and the number of books and magazines they have. -->
+<h2><%= authorData.author %></h2>
+<p class="publication-count"><%= authorData.bookCount %> book(s), <%= authorData.magazineCount %> magazine(s)</p>
+
+<!-- Display the details of each book and magazine the author has. -->
+<% if (authorData.bookCount > 0) { %>
+<h3>Books:</h3>
+<ul class="publication-list">
+  <% authorData.books.forEach(book => { %>
+  <li class="publication-item">
+    <%= book.title %>
+    <br />ISBN: <%= book.isbn %> <br />Published: <%= book.publishDate ? (new
+    Date(book.publishDate).toLocaleDateString() || 'Invalid Date') : 'Date not available' %>
+  </li>
+  <% }); %>
+</ul>
+<% } %>
+
+<!-- Display the details of each magazine the author has. -->
+<% if (authorData.magazineCount > 0) { %>
+<h3>Magazines:</h3>
+<ul class="publication-list">
+  <% authorData.magazines.forEach(magazine => { %>
+  <li class="publication-item">
+    <%= magazine.title %>
+    <br />Issue: <%= magazine.issue %> <br />Published: <%= magazine.publishDate ? (new
+    Date(magazine.publishDate).toLocaleDateString() || 'Invalid Date') : 'Date not available' %>
+  </li>
+  <% }); %>
+</ul>
+<% } %> <% }); %>
+
+<!-- Add a link to navigate back to the home page. -->
+<a href="/" class="home-link">Back to Home</a>

@@ -1,0 +1,44 @@
+/* ||||||||| NAVBAR ||||||||| */
+.navbar {
+  position: fixed;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
+  background-color: rgb(11, 136, 124) !important;
+  color: white !important;
+  text-shadow: 1px 1px  2px black;
+}
+
+.navbar .navbar-brand,
+nav .navbar-nav .nav-link,
+.navbar-text {
+  color: white !important;
+  text-shadow: 1px 1px  2px black;
+}
+
+/* ||||||||| HEADER ||||||||| */
+
+
+/* ||||||||| MAIN ||||||||| */
+
+
+/* ||||||||| FOOTER ||||||||| */
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: rgb(11, 136, 124);
+  color: white;
+  text-shadow: 1px 1px 2px black;
+  text-align: center;
+  padding: 10px 20px;
+}
+
+
+/* ||||||||| MEDIA QUERY ||||||||| */
+@media (min-width: 992px) {
+  .navbar-expand-lg .navbar-collapse {
+    display: flex !important;
+    justify-content: space-between;
+  }
+}

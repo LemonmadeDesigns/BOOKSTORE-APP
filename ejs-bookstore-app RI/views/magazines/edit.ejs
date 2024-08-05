@@ -1,0 +1,26 @@
+<style>
+  @media (max-width: 768px) {
+    body > form {
+      display: flex;
+      flex-direction: column;
+      height: 200px;
+      justify-content: space-evenly;
+      padding: 1em 2em;
+    }
+
+    body > a {
+      margin-left: 3em;
+    }
+  }
+</style>
+
+<h1>Edit Magazine</h1>
+<form action="/magazines/edit/<%= magazine._id %>" method="POST">
+  <input type="text" name="title" value="<%= magazine.title %>" required>
+  <input type="text" name="author" value="<%= magazine.author %>" required>
+  <input type="text" name="isbn" value="<%= magazine.isbn %>" required>
+  <input type="date" name="publishDate" value="<%= magazine.publishDate.toISOString().split('T')[0] %>" required>
+  <input type="text" name="issue" value="<%= magazine.issue %>" required>
+  <button type="submit">Update Magazine</button>
+</form>
+<a href="/magazines">Back to Magazines</a>

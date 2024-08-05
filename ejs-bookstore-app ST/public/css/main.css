@@ -1,0 +1,45 @@
+/* Global styles */
+html {
+  height: 100vh;
+  width: 100vw
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+/* Container styles */
+.container {
+  padding: 1.5em;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin: auto;
+  border-radius: 8px;
+  margin: 7em auto 4em;
+}
+
+/* Book list styles */
+
+/* ||||||||| MEDIA QUERY ||||||||| */
+@media (max-width: 600px) {
+  .container {
+    width: 80%;
+    margin: 5em auto 2em;
+  }
+
+  body > form {
+    display: flex;
+    flex-direction: column;
+    height: 200px;
+    justify-content: space-evenly;
+    padding: 2em;
+  }
+  
+}

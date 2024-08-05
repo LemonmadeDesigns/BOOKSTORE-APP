@@ -1,0 +1,74 @@
+<style>
+  body {
+    margin-bottom: 2em;
+  }
+  
+  body > form {
+    display: flex;
+    flex-direction: column;
+    height: 200px;
+    justify-content: space-evenly;
+    padding: 1em 2em;
+  }
+  
+  li {
+    display: flex;
+    align-content: stretch;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    flex-direction: column;
+  }
+  
+  body > ul > li {
+    margin: 1em 0;
+    width: 90%;
+  }
+
+  body > ul > li > a {
+    margin: 0.5em;
+    height: 30px;
+    width: 65px;
+    border-radius: 5px;
+    background-color: rgb(11, 136, 124) !important;
+    color: white;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+  }
+
+  body > ul > li > form > button {
+    margin: 0.5em;
+    height: 30px;
+    width: 65px;
+    border-radius: 5px;
+    border: none;
+    background-color: red;
+  }
+
+  body > a {
+    margin-left: 3em;
+  }
+</style>
+
+<h1>Magazines</h1>
+<form action="/magazines/add" method="POST">
+  <input type="text" name="title" placeholder="Title" required />
+  <input type="text" name="author" placeholder="Author" required />
+  <input type="text" name="isbn" placeholder="ISBN" required />
+  <input type="date" name="publishDate" required />
+  <input type="text" name="issue" placeholder="Issue" required />
+  <button type="submit">Add Magazine</button>
+</form>
+<ul>
+  <% magazines.forEach(magazine => { %>
+  <li>
+    <%= magazine.title %> by <%= magazine.author %> (Issue: <%= magazine.issue %>)
+    <a href="/magazines/edit/<%= magazine._id %>">Edit</a>
+    <form action="/magazines/delete/<%= magazine._id %>" method="POST" style="display: inline">
+      <button type="submit">Delete</button>
+    </form>
+  </li>
+  <% }) %>
+</ul>
+<a href="/">Back to Home</a>
